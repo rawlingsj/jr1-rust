@@ -56,8 +56,9 @@ pipeline {
           }
 //            input 'ok?'
           container('rust') {
-            sh "cargo install"
-            sh "cp ~/.cargo/jr1-rust ."
+              sh 'rustup override set nightly'
+            sh "CARGO_TARGET_DIR=./bin cargo install"
+    
 
             sh "docker build -t \$JENKINS_X_DOCKER_REGISTRY_SERVICE_HOST:\$JENKINS_X_DOCKER_REGISTRY_SERVICE_PORT/$ORG/$APP_NAME:\$(cat VERSION) ."
             sh "docker push \$JENKINS_X_DOCKER_REGISTRY_SERVICE_HOST:\$JENKINS_X_DOCKER_REGISTRY_SERVICE_PORT/$ORG/$APP_NAME:\$(cat VERSION)"
