@@ -54,7 +54,7 @@ pipeline {
               sh "make tag"
             }
           }
-            input 'ok?'
+//            input 'ok?'
           container('rust') {
             sh "cargo install"
             sh "cp ~/.cargo/jr1-rust ."
