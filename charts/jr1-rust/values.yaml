@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: draft
-  tag: dev
+  repository: 10.43.240.46:5000/jenkinsx/jr1-rust
+  tag: 0.0.8
   pullPolicy: IfNotPresent
 service:
   name: jr1-rust
