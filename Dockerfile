@@ -1,4 +1,4 @@
-FROM scratch
+FROM centos:7
 EXPOSE 8080
-ENTRYPOINT ["/jr1-rust"]
-COPY .bin/ /jr1-rust
+CMD ["/jr1-rust"]
+COPY ./ /
