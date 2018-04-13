@@ -72,6 +72,7 @@ pipeline {
         steps {
           dir ('./charts/jr1-rust') {
             container('rust') {
+                input 'ok?'
               sh 'jx step changelog --version \$(cat ../../VERSION)'
 
               // release the helm chart
