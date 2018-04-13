@@ -42,6 +42,7 @@ pipeline {
         }
         steps {
           container('rust') {
+              input 'ok?'
             // ensure we're not on a detached head
             sh "git checkout master"
             // until we switch to the new kubernetes / jenkins credential implementation use git credentials store
@@ -50,12 +51,14 @@ pipeline {
             sh "echo \$(jx-release-version) > VERSION"
           }
           dir ('./charts/jr1-rust') {
+              
             container('rust') {
               sh "make tag"
             }
           }
 
           container('rust') {
+              
             sh 'rustup override set nightly'
             sh "cargo install"
             sh "cp ~/.cargo/bin/jr1-rust ."
